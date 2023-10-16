@@ -10,4 +10,4 @@ __pycache__/
 draft*
 
 ### Misc
-/docker*
+/docker*/
