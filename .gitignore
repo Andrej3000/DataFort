@@ -1,0 +1,13 @@
+### Dev
+.idea/
+venv/
+__pycache__/
+
+### Secrets
+*.env
+
+### Temp
+draft*
+
+### Misc
+/docker*
