@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+
+  mongodb:
+    image: mongo:7.0.2
+    container_name: ${COMPOSE_PROJECT_NAME}-mongodb
+    restart: always
+    ports:
+      - "127.0.0.1:37017:27017"
+    env_file:
+      - ./.env
+    volumes:
+      - ./docker/mongodb:/data/db
+    networks:
+      - default
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok'
+      interval: 5s
+      timeout: 2s
+      retries: 3
+      start_period: 2s
+
+  collector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${COMPOSE_PROJECT_NAME}-collector
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - ./data:/data
+    networks:
+      - default
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+networks:
+  default:
+    driver: bridge
+    name: ${DOCKER_NETWORK}
