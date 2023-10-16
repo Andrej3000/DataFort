@@ -14,7 +14,7 @@ class WeatherHandler:
     @classmethod
     async def handler(cls, city: City, data: dict) -> None:
         data = {"city_id": city.city_id} | cls._data_cleaner(data)
-        log.info(f"Consume: {city.city_name}")
+        log.info(f"Handle: {city.city_name}")
         await cls._mongodb.insert_one(cls._collection_name, data)
 
     @classmethod
