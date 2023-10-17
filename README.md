@@ -25,11 +25,11 @@
     - Прогноз на 5
       дней [openweathermap.org/forecast5](https://openweathermap.org/forecast5)  
       БД: `weather_collector`  
-      Коллекция: `current_weather`
+      Коллекция: `five_day_weather_forecast`  
     - Текущая
       погода [openweathermap.org/current](https://openweathermap.org/current)  
       БД: `weather_collector`  
-      Коллекция: `five_day_weather_forecast`  
+      Коллекция: `current_weather`
       (для оценки качества прогнозов в будущем)
 
 В зависимости от того как спроектирован Дата-центр и того как данные будут
